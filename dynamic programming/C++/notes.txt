@@ -1,0 +1,17 @@
+1. Alvin's Memoization Recipe
+
+	1.1 Make it work:
+
+		1.1.1 Visulaize the problem as tree.
+
+		1.1.2 Implement the tree using recursion.
+
+		1.1.3 test it.
+
+	1.2 Make it efficient:
+
+		1.2.1 add memo variable or object.(maybe by passing as argument or global object.).
+
+		1.2.2 add a base case to return memo values.(base condition of recursion.).
+		
+		1.2.3 store return values into the memo.

@@ -1,0 +1,4 @@
+bestsum(dp, sum, &v ) = 0 bestsum(dp, sum, &v ) = 3 
+bestsum(dp, sum, &v ) = 0 bestsum(dp, sum, &v ) = 7 
+bestsum(dp, sum, &v ) = 0 bestsum(dp, sum, &v ) = 2 
+bestsum(dp, sum, &v ) = 0 bestsum(dp, sum, &v ) = 3 
