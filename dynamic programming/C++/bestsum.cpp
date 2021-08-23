@@ -3,106 +3,121 @@
 #include <cstdlib>
 #include <list>
 using namespace std;
+#define pf(val) cout<<#val <<"="<< val<<endl;
 #define ll long long
-#define print(a)  if(a.empty())cout<<"NULL";        \
+#define print(a)  if(a[0]==0)cout<<"Not Possible";        \
 	else                  \
-    for (auto x : a)      \
-        cout << #a<<" = "<< x << " "; \
-    cout << endl          \
+for (int i = 0; i < a.size() - 1; ++i)  \
+	cout << a[i + 1] << " "; \
+cout << endl;        \
 
 void fastIO() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
 }
 
-vector<vector<int>> x(1000);
+vector<int> z(1);
+//my solution for the problem
+vector<int>  bestsum(vector<vector<int>> &dp, int sum, vector<int> *v) {
+	// cout << (*dp)[sum][0];
 
-vector<int>  bestsum(ll* dp, int sum, vector<int>* v) {
-
-	vector<int> y(1);
-	// cout << "sum=" << sum << endl;
-	// if (dp[sum] != 0) {
-	// 	return (dp[sum] == 1 ? true : false);
-	// }
-
-	if (sum == 0) {
-		y[0] = 0;
-		return y;
+	if (dp[sum][0] == 1) {
+		return dp[sum];
 	}
+
+	// pf(sum);
+	vector<vector<int>> x;
+	if (sum == 0) {
+
+		z[0] = 1;
+		return z;
+	}
+
+	int flag = 0;
 	for (int i = 0; i < v->size(); ++i)
 	{
-
 		int remiander =  sum - (*v)[i];
-		// cout << "remiander=" << remiander << "\n" ;
-		if (remiander >= 0) {
-
-			y = bestsum(dp, remiander, v);
-			// cout << y[0] << endl;
-			if (y[0] == 0) {
-				y.push_back((*v)[i]);
-				// print(y);
+		if ( remiander >= 0)  {
+			// pf(remiander);
+			z = bestsum(dp, remiander, v);
+			if (z[0] == 1) {
+				// dp[sum].push_back((*v)[i]);
+				z.push_back((*v)[i]);
+				flag = 1;
+				// return z;
 			}
-			else if (y[0] == 1) {
-				continue;
+
+		}
+		if (flag == 1) {
+			x.push_back(z);
+			// cout << "x=size = " << x.size() << endl;
+			// for (int k = 0; k < x.size(); ++k)
+			// {
+			// 	cout << k << "=";
+			// 	for (int j = 0; j < x[k].size(); ++j)
+			// 	{
+			// 		cout << x[k][j] << " ";
+			// 	}
+			// 	cout << endl;
+			// }
+			flag = 0;
+		}
+		z.clear();
+		z.push_back(0);
+	}
+	if (x.size() == 1) {
+		return x[0];
+	}
+	if (x.size() > 1) {
+		int index = -1;
+		vector<int> temp = x[0];
+		for (int i = 0; i < x.size() - 1; ++i)
+		{
+			if (temp.size() > x[i + 1].size()) {
+				temp = x[i + 1];
 			}
 		}
-		if (y[0] == 0) {
-
-			x.push_back(y);
-
-		}
+		x.clear();
+		z = temp;
 	}
-	int index = 0;
-	for (int i = 0; i < x.size() - 1; ++i)
-	{
-		if (x[i].size() > x[i + 1].size()) {
-			index = i + 1;
-		}
-		else {
-			index = i;
-		}
-	}
-	if (y[0] == 0) {
-		return x[index];
-	}
-	else {
-		y[0] = 1;
-		return y;
-	}
+	dp[sum] = z;
+	return dp[sum];
 
 }
 
 
 
+
 //Inputs
-// 5
-// 7 2
-// 2 3
+// 4
 // 7 4
 // 5 3 4 7
-// 7 2
-// 2 4
 // 8 3
 // 2 3 5
-// 300 2
-// 7 14
-
+// 8 3
+// 1 4 5
+// 100 4
+// 1 2 5 25
 
 void solve() {
+
 	int sum, count = 0;
 	cin >> sum;
 	int n;
 	cin >> n;
-	ll dp[1000] = {0};
+	vector<vector<int>> dp(1000, vector<int>(1));
 	vector<int> v(n);
+
 	for (int i = 0; i < n; ++i)
 	{
 		cin >> v[i];
 	}
-	print(bestsum(dp, sum, &v ));
-	// cout << ( ? "true\n" : "false\nNULL");
-	// print(x);
-	// cout << endl;
+	z = bestsum(dp, sum, &v);
+	print(z);
+	// print(bestsum(dp, sum, &v));
+	// z.clear();
+	// z.push_back(0);
+
 }
 
 int main(int argc, char const * argv[])
@@ -116,3 +131,34 @@ int main(int argc, char const * argv[])
 	}
 	return 0;
 }
+
+
+
+//alternative solution without dynamic programming but with clear code from online dude.
+
+// vector<int> bestsum( int targetsum, vector<int>* number) {
+// 	if (targetsum == 0) {
+// 		z[0] = 1;
+// 		return z;
+// 	}
+// 	if (targetsum < 0) {
+// 		z[0] = -1;
+// 		return z;
+// 	}
+
+// 	vector<int> short_combination;
+// 	short_combination.push_back(-1);
+// 	for (int i = 0; i < number->size(); ++i)
+// 	{
+// 		int remiander =  targetsum - (*number)[i];
+// 		vector<int> remiander_combination = bestsum(remiander, number);
+// 		if (remiander_combination[0] != -1) {
+// 			remiander_combination.push_back((*number)[i]);
+// 			vector <int> combination = remiander_combination;
+// 			if (short_combination[0] == -1 || short_combination.size() > combination.size()) {
+// 				short_combination = combination;
+// 			}
+// 		}
+// 	}
+// 	return short_combination;
+// }
