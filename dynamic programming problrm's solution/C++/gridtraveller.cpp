@@ -42,3 +42,15 @@ int main(int argc, char const *argv[])
 	solve();
 	return 0;
 }
+
+// Input
+// 2 14
+
+//output
+//14
+
+//Input
+// 3 3
+
+//Output
+//6

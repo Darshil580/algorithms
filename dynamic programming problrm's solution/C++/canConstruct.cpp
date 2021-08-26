@@ -102,6 +102,12 @@ int main(int argc, char const *argv[])
 // e ee eee eeee eeeee eeeeee
 // eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef
 
+//Output
+// true
+// false
+// true
+// false
+
 
 
 

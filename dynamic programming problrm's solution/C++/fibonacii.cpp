@@ -48,3 +48,12 @@ int main(int argc, char const *argv[])
 	solve();
 	return 0;
 }
+
+
+//Input
+// 55
+
+//Output
+// 2144908973
+
+

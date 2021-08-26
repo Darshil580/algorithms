@@ -91,3 +91,11 @@ int main(int argc, char const * argv[])
 // 6
 // e ee eee eeee eeeee eeeeee
 // eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef
+
+//Output
+
+// 2
+// 1
+// 0
+// 4
+// 0

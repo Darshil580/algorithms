@@ -88,7 +88,7 @@ vector<int>  bestsum(vector<vector<int>> &dp, int sum, vector<int> *v) {
 
 
 
-//Inputs
+// Inputs
 // 4
 // 7 4
 // 5 3 4 7
@@ -98,6 +98,14 @@ vector<int>  bestsum(vector<vector<int>> &dp, int sum, vector<int> *v) {
 // 1 4 5
 // 100 4
 // 1 2 5 25
+
+
+//Output
+// 7
+// 5 3
+// 4 4
+// 25 25 25 25
+
 
 void solve() {
 

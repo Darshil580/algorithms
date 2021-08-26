@@ -54,6 +54,15 @@ bool checksum(ll* dp, int sum, vector<int>* v) {
 // 300 2
 // 7 14
 
+//Output
+
+// 3 2 2
+// 4 3
+// NULL
+// 2 2 2 2
+// NULL
+
+
 
 void solve() {
 	x.clear();
